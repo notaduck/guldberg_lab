@@ -8,7 +8,7 @@ import {
   // GitHub,
   // Mail,
   Book,
-  Hexagon
+  Hexagon,
 } from 'react-feather';
 
 const Sidebar = () => {
@@ -60,10 +60,12 @@ const Sidebar = () => {
 const SidebarWrapper = styled.div`
   background: var(--color-sidebar_background);
   position: fixed;
-  left: 0;
+  width: 20rem;
+  height: 100%;
+  /* left: 0;
   width: 20rem;
   min-height: 100vh;
-  width: 20rem;
+  width: 20rem; */
 `;
 
 const MenuEntries = styled.div`

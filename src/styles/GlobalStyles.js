@@ -12,9 +12,14 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
   }
 
+  h3 {
+        color: var(--color-text);
+  }
+
   a {
     color: var(--color-secondary);
   }
+
 `;
 
 export default GlobalStyles;

@@ -13,20 +13,29 @@ import Sidebar from './sidebar';
 
 const Layout = ({ children }) => {
   return (
-    <Container>
-      <Sidebar />
-      <MainWrapper>{children}</MainWrapper>
-    </Container>
+    <>
+      <Container>
+        <Sidebar />
+        <MainWrapper>{children}</MainWrapper>
+      </Container>
+    </>
   );
 };
 
 const MainWrapper = styled.main`
-  flex: 3;
-  max-width: 800px;
+  /* margin-left: 1%;
+  margin-top: 1%;
+  margin-right: 1%;
+  flex: 3; */
+  /* max-width: 100%; */
+  width: 100%;
+  /* margin-left: 21rem; */
+  margin: 1rem 1rem 1rem 21rem;
 `;
 
 const Container = styled.div`
   display: flex;
+  position: relative;
 `;
 
 Layout.propTypes = {
