@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
+import { Calendar, Coffee } from 'react-feather';
 
 import Pager from '../components/Pager';
 import Layout from '../components/Layout';
@@ -12,9 +13,13 @@ const Blog = ({ data, pageContext }) => {
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <Post key={node.frontmatter.slug}>
             <Link to={`/posts${node.frontmatter.slug}`}>
-              <h3>{node.frontmatter.title}</h3>
+              <h3> >_ {node.frontmatter.title}</h3>
             </Link>
-            <p>{node.frontmatter.date}</p>
+            <p>
+              <Calendar size="16" /> {''}
+              {node.frontmatter.date} {''} {''}
+              <Coffee size="16" /> {node.timeToRead} min.
+            </p>
             <p>{node.excerpt}</p>
             <Link class="read-more" to={`/posts${node.frontmatter.slug}`}>
               Read More
@@ -37,6 +42,7 @@ export const query = graphql`
       edges {
         node {
           excerpt
+          timeToRead
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
@@ -49,27 +55,19 @@ export const query = graphql`
 `;
 
 const Post = styled.article`
-  box-shadow: 0px 0px 1px rgba(25, 17, 34, 0.5);
+  border-left: 4px solid rgb(188, 67, 93);
   padding: 1rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
+  padding-top: 0;
+  margin-bottom: 3rem;
   a {
     color: #000;
     text-decoration: none;
   }
   h2 {
     margin-bottom: 0;
-    color: var(--color-text);
   }
   p {
     font-size: 0.8rem;
-  }
-  .read-more {
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    font-size: 0.8rem;
-    text-decoration: underline;
-    color: #524763;
   }
 `;
 export default Blog;

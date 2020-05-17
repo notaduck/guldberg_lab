@@ -64,36 +64,46 @@ const Sidebar = () => {
 
   return (
     <SidebarWrapper>
-      <Img
-        fluid={data.file.childImageSharp.fluid}
-        style={{ display: 'flex' }}
-      />
+      <div>
+        <Img
+          fluid={data.file.childImageSharp.fluid}
+          style={{ display: 'flex' }}
+        />
+      </div>
       <DarkToggle />
       <Nav>
         {menuEntries.map(entry => (
-          <NavItem key={entry.name}>
-            <Link to={entry.slug} activeClassName="active">
-              <p>
-                {entry.icon} {entry.name}
-              </p>
-            </Link>
-          </NavItem>
+          <>
+            <NavItem key={entry.name}>
+              <Link to={entry.slug} activeClassName="active">
+                <p>
+                  {entry.icon} {entry.name}
+                </p>
+              </Link>
+            </NavItem>
+            <HLine />
+          </>
         ))}
       </Nav>
       <SocialLinks>
         {socialLinks.map(link => (
           <li>
-            {' '}
             <a target="_blank" href={link.link}>
-              {' '}
               {link.icon}
-            </a>{' '}
+            </a>
           </li>
         ))}
       </SocialLinks>
     </SidebarWrapper>
   );
 };
+
+const HLine = styled.div`
+  margin-left: 10%;
+  width: 80%;
+  border-bottom: 1px solid gray;
+  border-radius: 50%;
+`;
 
 const SidebarWrapper = styled.div`
   background: var(--color-sidebar_background);
@@ -107,18 +117,15 @@ const SidebarWrapper = styled.div`
 `;
 
 const Nav = styled.ul`
-  width: 100%;
-
   display: flex;
   flex-direction: column;
-  list-style-type: none;
+  width: 100%;
   margin: 0;
   padding: 0;
 `;
 
 const NavItem = styled.li`
   display: flex;
-
   a {
     width: 100%;
     color: var(--color-text);
@@ -133,19 +140,23 @@ const NavItem = styled.li`
 
   a:hover {
     background-color: var(--color-secondary);
+
+    color: black;
   }
-  /* a:hover:not(.active) {
-    background-color: var(--color-secondary);
-  } */
 
   .active {
-    border: 1px solid #efef;
+    color: var(--color-secondary);
   }
 `;
 
-const SocialLinks = styled.li`
+const SocialLinks = styled.ul`
   display: flex;
   flex-direction: row;
+  justify-content: center;
+
+  li {
+    text-decoration: none;
+  }
 `;
 
 export default Sidebar;

@@ -8,7 +8,7 @@ export const COLORS = {
     dark: 'hsl(214.3,11.7%,23.5%)', // navy navy blue
   },
   sidebar_background: {
-    light: 'hsl(0deg, 61%, 60%)', // white
+    light: 'hsl(220deg, 8.8%, %)', // white
     dark: 'hsl(215,14.3%,16.5%)', // navy navy blue
   },
   primary: {
