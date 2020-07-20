@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Sidebar from './sidebar';
+import DarkToggle from './DarkToggle';
 
 const Layout = ({ children }) => {
   return (
@@ -18,6 +19,7 @@ const Layout = ({ children }) => {
 const MainWrapper = styled.main`
   width: 100%;
   margin: 3rem 5rem 5rem 25rem;
+  max-width: 50vw;
 `;
 
 const Container = styled.div`

@@ -34,7 +34,7 @@ It was immediately recognized by [ bolt ](https://github.com/gicmo/bolt)
 
 I could not get one of the monitors to work with HDMI, but I swapped the HDMI out with a DP cable and everything seems to work, all of the USB ports seem to work just fine, the network card is also functional.
 
-```sh
+```bash
 11: enp11s0u2u4: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether d8:d0:90:13:fd:49 brd ff:ff:ff:ff:ff:ff
     inet 10.0.1.104/24 brd 10.0.1.255 scope global dynamic noprefixroute enp11s0u2u4
@@ -48,7 +48,7 @@ I could not get one of the monitors to work with HDMI, but I swapped the HDMI ou
 
 and according to [Richard](https://blogs.gnome.org/hughsie/2019/05/02/updating-the-firmware-on-new-dell-docks/) it should even be possible to upgrade the WD19TB's firmware from Linux so we don't have to shrink out `/` partition, install windows, upgrade the firmware, delete windows, resize `/` and reinstall our bootloader in order to do a simple firmware upgrade. I have not had the time myself to try this out but in theory, it should just work, just like the rest of the dock does.
 
-```sh
+```bash
 
 [~] fwupdmgr get-topology
 ○

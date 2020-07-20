@@ -41,7 +41,7 @@ export const query = graphql`
     ) {
       edges {
         node {
-          excerpt
+          excerpt(pruneLength: 250)
           timeToRead
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
@@ -60,7 +60,7 @@ const Post = styled.article`
   padding-top: 0;
   margin-bottom: 3rem;
   a {
-    color: #000;
+    color: var(--color-text);
     text-decoration: none;
   }
   h2 {

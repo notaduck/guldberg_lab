@@ -70,7 +70,6 @@ const Sidebar = () => {
           style={{ display: 'flex' }}
         />
       </div>
-      <DarkToggle />
       <Nav>
         {menuEntries.map(entry => (
           <>
@@ -86,17 +85,41 @@ const Sidebar = () => {
         ))}
       </Nav>
       <SocialLinks>
-        {socialLinks.map(link => (
-          <li>
-            <a target="_blank" href={link.link}>
-              {link.icon}
-            </a>
-          </li>
-        ))}
+        <ul>
+          {socialLinks.map((link, index) => {
+            let liStyle;
+
+            if (index != 0) {
+              liStyle = { paddingLeft: '22px' };
+            }
+            return (
+              <li style={liStyle}>
+                <a href={link.link}> {link.icon}</a>
+              </li>
+            );
+          })}
+
+						<li> <DarkToggle/> </li>
+        </ul>
       </SocialLinks>
     </SidebarWrapper>
   );
 };
+
+const SocialLinks = styled.div`
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+  }
+  li:hoover {
+  }
+  a {
+    color: white;
+  }
+`;
 
 const HLine = styled.div`
   margin-left: 10%;
@@ -107,13 +130,16 @@ const HLine = styled.div`
 
 const SidebarWrapper = styled.div`
   background: var(--color-sidebar_background);
+	p {
+		color: white
+	}
   position: fixed;
   width: 20rem;
   height: 100%;
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 5% 1fr;
+  grid-template-rows: 1.5fr 2fr 0fr;
 `;
 
 const Nav = styled.ul`
@@ -146,16 +172,6 @@ const NavItem = styled.li`
 
   .active {
     color: var(--color-secondary);
-  }
-`;
-
-const SocialLinks = styled.ul`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-
-  li {
-    text-decoration: none;
   }
 `;
 

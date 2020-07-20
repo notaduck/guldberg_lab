@@ -8,15 +8,19 @@ export const COLORS = {
     dark: 'hsl(214.3,11.7%,23.5%)', // navy navy blue
   },
   sidebar_background: {
-    light: 'hsl(220deg, 8.8%, %)', // white
+    light: 'hsl(214deg, 29.3%, 26.1%)', // white
     dark: 'hsl(215,14.3%,16.5%)', // navy navy blue
   },
+  sidebar_text: {
+    light: 'hsl(0deg, 0%, 100%)', // white
+    // dark: 'hsl(214.3,11.7%,23.5%)', // navy navy blue
+  },
   primary: {
-    light: 'hsl(340deg, 100%, 40%)', // Pinkish-red
+    light: 'hsl(214deg, 29.3%, 26.1%)', // Pinkish-red
     dark: 'hsl(50deg, 100%, 50%)', // Yellow
   },
   secondary: {
-    light: 'hsl(250deg, 100%, 50%)', // Purplish-blue
+    light: 'hsl(213.4,29.2%,41%)', // Purplish-blue
     dark: 'hsl(190deg, 100%, 40%)', // Cyan
   },
   // Grays, scaling from least-noticeable to most-noticeable
