@@ -11,7 +11,7 @@ const Blog = ({ data, pageContext }) => {
     <Layout>
       <div>
         {data.allMarkdownRemark.edges.map(({ node }) => (
-          <Post key={node.frontmatter.slug}>
+          <Post key={node.id}>
             <Link to={`/posts${node.frontmatter.slug}`}>
               <h3> >_ {node.frontmatter.title}</h3>
             </Link>
@@ -21,7 +21,7 @@ const Blog = ({ data, pageContext }) => {
               <Coffee size="16" /> {node.timeToRead} min.
             </p>
             <p>{node.excerpt}</p>
-            <Link class="read-more" to={`/posts${node.frontmatter.slug}`}>
+            <Link className="read-more" to={`/posts${node.frontmatter.slug}`}>
               Read More
             </Link>
           </Post>
@@ -43,6 +43,7 @@ export const query = graphql`
         node {
           excerpt(pruneLength: 250)
           timeToRead
+          id
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title

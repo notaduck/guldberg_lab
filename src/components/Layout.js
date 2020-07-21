@@ -11,6 +11,10 @@ const Layout = ({ children }) => {
       <Container>
         <Sidebar />
         <MainWrapper>{children}</MainWrapper>
+
+        <DarkToggleWrapper>
+          <DarkToggle />
+        </DarkToggleWrapper>
       </Container>
     </>
   );
@@ -18,13 +22,17 @@ const Layout = ({ children }) => {
 
 const MainWrapper = styled.main`
   width: 100%;
-  margin: 3rem 5rem 5rem 25rem;
+  margin: 3rem 5rem 5rem 30rem;
   max-width: 50vw;
 `;
 
 const Container = styled.div`
   display: flex;
   position: relative;
+`;
+
+const DarkToggleWrapper = styled.div`
+  padding-top: 5rem;
 `;
 
 Layout.propTypes = {

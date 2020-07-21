@@ -11,6 +11,7 @@ import {
   Book,
   Hexagon,
   Briefcase,
+  Search,
 } from 'react-feather';
 
 const Sidebar = () => {
@@ -33,13 +34,18 @@ const Sidebar = () => {
       icon: <Book />,
     },
     {
+      name: 'Search',
+      slug: '/search',
+      icon: <Search />,
+    },
+    {
       name: 'About',
-      slug: 'about',
+      slug: '/about',
       icon: <Hexagon />,
     },
     {
       name: 'Projects',
-      slug: 'projects',
+      slug: '/projects',
       icon: <Briefcase />,
     },
   ];
@@ -72,16 +78,13 @@ const Sidebar = () => {
       </div>
       <Nav>
         {menuEntries.map(entry => (
-          <>
-            <NavItem key={entry.name}>
-              <Link to={entry.slug} activeClassName="active">
-                <p>
-                  {entry.icon} {entry.name}
-                </p>
-              </Link>
-            </NavItem>
-            <HLine />
-          </>
+          <NavItem key={entry.name}>
+            <Link to={entry.slug} activeClassName="active">
+              <p>
+                {entry.icon} {entry.name}
+              </p>
+            </Link>
+          </NavItem>
         ))}
       </Nav>
       <SocialLinks>
@@ -99,7 +102,7 @@ const Sidebar = () => {
             );
           })}
 
-						<li> <DarkToggle/> </li>
+          <li> </li>
         </ul>
       </SocialLinks>
     </SidebarWrapper>
@@ -130,9 +133,9 @@ const HLine = styled.div`
 
 const SidebarWrapper = styled.div`
   background: var(--color-sidebar_background);
-	p {
-		color: white
-	}
+  p {
+    color: white;
+  }
   position: fixed;
   width: 20rem;
   height: 100%;
