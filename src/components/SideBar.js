@@ -2,8 +2,7 @@ import React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-
-import DarkToggle from './DarkToggle';
+import SearchBar from './SearchBar';
 import {
   Facebook,
   GitHub,
@@ -11,7 +10,6 @@ import {
   Book,
   Hexagon,
   Briefcase,
-  Search,
 } from 'react-feather';
 
 const Sidebar = () => {
@@ -24,6 +22,10 @@ const Sidebar = () => {
           }
         }
       }
+
+      siteSearchIndex {
+        index
+      }
     }
   `);
 
@@ -32,11 +34,6 @@ const Sidebar = () => {
       name: 'Blog',
       slug: '/blog',
       icon: <Book />,
-    },
-    {
-      name: 'Search',
-      slug: '/search',
-      icon: <Search />,
     },
     {
       name: 'About',
@@ -76,6 +73,7 @@ const Sidebar = () => {
           style={{ display: 'flex' }}
         />
       </div>
+      <SearchBar searchIndex={data.siteSearchIndex.index} />
       <Nav>
         {menuEntries.map(entry => (
           <NavItem key={entry.name}>
@@ -92,7 +90,7 @@ const Sidebar = () => {
           {socialLinks.map((link, index) => {
             let liStyle;
 
-            if (index != 0) {
+            if (index !== 0) {
               liStyle = { paddingLeft: '22px' };
             }
             return (
@@ -122,13 +120,6 @@ const SocialLinks = styled.div`
   a {
     color: white;
   }
-`;
-
-const HLine = styled.div`
-  margin-left: 10%;
-  width: 80%;
-  border-bottom: 1px solid gray;
-  border-radius: 50%;
 `;
 
 const SidebarWrapper = styled.div`
