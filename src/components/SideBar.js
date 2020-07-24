@@ -42,12 +42,12 @@ const Sidebar = () => {
       icon: <Search />,
     },
     {
-      name: 'About',
+      name: 'About<stub>',
       slug: '/about',
       icon: <Hexagon />,
     },
     {
-      name: 'Projects',
+      name: 'Projects<stub>',
       slug: '/projects',
       icon: <Briefcase />,
     },
