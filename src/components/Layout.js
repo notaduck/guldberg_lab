@@ -33,7 +33,11 @@ const Container = styled.div`
 `;
 
 const DarkToggleWrapper = styled.div`
-  padding-top: 5rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 25px;
+  margin-right: 25px;
 `;
 
 Layout.propTypes = {
