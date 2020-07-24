@@ -10,6 +10,7 @@ import {
   Book,
   Hexagon,
   Briefcase,
+  Search,
 } from 'react-feather';
 
 const Sidebar = () => {
@@ -34,6 +35,11 @@ const Sidebar = () => {
       name: 'Blog',
       slug: '/blog',
       icon: <Book />,
+    },
+    {
+      name: 'Search',
+      slug: '/search',
+      icon: <Search />,
     },
     {
       name: 'About',
@@ -73,7 +79,6 @@ const Sidebar = () => {
           style={{ display: 'flex' }}
         />
       </div>
-      <SearchBar searchIndex={data.siteSearchIndex.index} />
       <Nav>
         {menuEntries.map(entry => (
           <NavItem key={entry.name}>
@@ -134,6 +139,7 @@ const SidebarWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1.5fr 2fr 0fr;
+  /* grid-template-rows: 1fr 0.4fr 2.3fr 0.3fr; */
 `;
 
 const Nav = styled.ul`

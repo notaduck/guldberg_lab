@@ -5,9 +5,23 @@ module.exports = {
     author: `Daniel Guldberg Aaes`,
   },
   plugins: [
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+            },
+          },
+        ],
+      },
+    },
     `gatsby-plugin-styled-components`,
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    'gatsby-remark-images',
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
@@ -129,7 +143,7 @@ module.exports = {
           MarkdownRemark: {
             title: node => node.frontmatter.title,
             // tags: node => node.frontmatter.tags,
-            path: node => node.frontmatter.path,
+            slug: node => node.frontmatter.slug,
           },
         },
         // Optional filter to limit indexed nodes

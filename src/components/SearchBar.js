@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Index } from 'elasticlunr';
 import { Link } from 'gatsby';
-
+import styled from 'styled-components';
+import Layout from '../components/Layout';
 // Search component
 export default class Search extends Component {
   constructor(props) {
@@ -15,15 +16,27 @@ export default class Search extends Component {
   render() {
     return (
       <div>
-        <input type="text" value={this.state.query} onChange={this.search} />
-        <ul>
-          {this.state.results.map(page => (
-            <li key={page.id}>
-              <Link to={'/' + page.path}>{page.title}</Link>
-              {/* {': ' + page.tags.join(`,`)} */}
-            </li>
-          ))}
-        </ul>
+        <SearchBarWrapper>
+          <Input
+            type="text"
+            name="search"
+            placeholder=">_ Search..."
+            value={this.state.query}
+            onChange={this.search}
+            autocomplete="off"
+          />
+        </SearchBarWrapper>
+        <p style={{ marginbottom: '10px' }}>
+          {' '}
+          Number of results: {this.state.results.length}
+        </p>
+        {this.state.results.map(page => (
+          <Post key={page.id}>
+            <Link to={`/posts${page.slug}`}>{page.title}</Link>
+            {/* {': ' + page.tags.join(`,`)} */}
+          </Post>
+        ))}
+        {/* </ul> */}
       </div>
     );
   }
@@ -40,9 +53,45 @@ export default class Search extends Component {
       query,
       // Query the index with search string to get an [] of IDs
       results: this.index
-        .search(query, {})
+        .search(query, { expand: true }) // Accept partial matches
         // Map over each ID and return the full document
         .map(({ ref }) => this.index.documentStore.getDoc(ref)),
     });
   };
 }
+
+const Input = styled.input`
+  padding-left: 10px;
+  border: none;
+  border-bottom: 1px solid var(--color-search);
+  background: var(--color-background);
+  height: 50px;
+  width: 75%;
+  box-decoration: none;
+
+  :focus {
+    outline: none;
+  }
+`;
+
+const Post = styled.article`
+  border-left: 4px solid rgb(188, 67, 93);
+  padding: 1rem;
+  padding-top: 0;
+  margin-bottom: 3rem;
+  a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  h2 {
+    margin-bottom: 0;
+  }
+  p {
+    font-size: 0.8rem;
+  }
+`;
+
+const SearchBarWrapper = styled.div`
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+`;
