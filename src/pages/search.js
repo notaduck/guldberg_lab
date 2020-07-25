@@ -1,34 +1,23 @@
-import React, { useState } from 'react';
-import { grahql } from 'gatsby';
-import Layout from '../components/Layout';
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import SearchBar from '../components/SearchBar';
 
-const SearchPage = data => {
+import Layout from '../components/Layout';
+const SearchPage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      siteSearchIndex {
+        index
+      }
+    }
+  `);
   return (
     <Layout>
-      <h1>Search Page</h1>
+      <div>
+        <SearchBar searchIndex={data.siteSearchIndex.index} />
+      </div>
     </Layout>
   );
 };
 
-export const query = graphql`
-  query posts($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
-      limit: $limit
-      skip: $skip
-      sort: { order: DESC, fields: [frontmatter___date] }
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 250)
-          timeToRead
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            slug
-          }
-        }
-      }
-    }
-  }
-`;
 export default SearchPage;

@@ -1,7 +1,6 @@
 ---
 slug: '/Dell_XPS_9550_AND_WD10TB_DOCK'
 title: 'WD19TB Dock and Dell XPS 9550 plays nicely with Linux'
-image: '../../images/coming-soon.jpg'
 date: '2019-08-13'
 type: 'blogpost'
 published: true

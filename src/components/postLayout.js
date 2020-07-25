@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 import Layout from './Layout';
-
+import styled from 'styled-components';
 // Static Query
 // Used anywhere, doesn't accept variable, can't use context
 
@@ -14,7 +14,10 @@ export default class postLayout extends Component {
 
     return (
       <Layout>
-        <h1>{markdownRemark.frontmatter.title}</h1>
+        <Title>
+          {' '}
+          {'>'}_ {markdownRemark.frontmatter.title}
+        </Title>
         <div
           dangerouslySetInnerHTML={{
             __html: markdownRemark.html,
@@ -36,4 +39,10 @@ export const query = graphql`
       }
     }
   }
+`;
+
+const Title = styled.h1`
+  border-left: 4px solid rgb(188, 67, 93);
+
+  padding: 1rem;
 `;

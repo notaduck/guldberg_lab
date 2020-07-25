@@ -2,8 +2,7 @@ import React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-
-import DarkToggle from './DarkToggle';
+import SearchBar from './SearchBar';
 import {
   Facebook,
   GitHub,
@@ -24,6 +23,10 @@ const Sidebar = () => {
           }
         }
       }
+
+      siteSearchIndex {
+        index
+      }
     }
   `);
 
@@ -39,12 +42,12 @@ const Sidebar = () => {
       icon: <Search />,
     },
     {
-      name: 'About',
+      name: 'About<stub>',
       slug: '/about',
       icon: <Hexagon />,
     },
     {
-      name: 'Projects',
+      name: 'Projects<stub>',
       slug: '/projects',
       icon: <Briefcase />,
     },
@@ -92,7 +95,7 @@ const Sidebar = () => {
           {socialLinks.map((link, index) => {
             let liStyle;
 
-            if (index != 0) {
+            if (index !== 0) {
               liStyle = { paddingLeft: '22px' };
             }
             return (
@@ -124,13 +127,6 @@ const SocialLinks = styled.div`
   }
 `;
 
-const HLine = styled.div`
-  margin-left: 10%;
-  width: 80%;
-  border-bottom: 1px solid gray;
-  border-radius: 50%;
-`;
-
 const SidebarWrapper = styled.div`
   background: var(--color-sidebar_background);
   p {
@@ -143,6 +139,7 @@ const SidebarWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1.5fr 2fr 0fr;
+  /* grid-template-rows: 1fr 0.4fr 2.3fr 0.3fr; */
 `;
 
 const Nav = styled.ul`

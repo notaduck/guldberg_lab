@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import styled from 'styled-components';
 
-import Sidebar from './sidebar';
+import Sidebar from './SideBar';
 import DarkToggle from './DarkToggle';
 
 const Layout = ({ children }) => {
@@ -22,7 +23,7 @@ const Layout = ({ children }) => {
 
 const MainWrapper = styled.main`
   width: 100%;
-  margin: 3rem 5rem 5rem 30rem;
+  margin: 3rem 5rem 5rem 30%;
   max-width: 50vw;
 `;
 
@@ -32,7 +33,11 @@ const Container = styled.div`
 `;
 
 const DarkToggleWrapper = styled.div`
-  padding-top: 5rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 25px;
+  margin-right: 25px;
 `;
 
 Layout.propTypes = {

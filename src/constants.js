@@ -23,6 +23,11 @@ export const COLORS = {
     light: 'hsl(213.4,29.2%,41%)', // Purplish-blue
     dark: 'hsl(190deg, 100%, 40%)', // Cyan
   },
+
+  search: {
+    dark: 'hsl(0deg, 0%, 100%)', // white
+    light: 'hsl(214.3,11.7%,23.5%)', // navy navy blue
+  },
   // Grays, scaling from least-noticeable to most-noticeable
   gray300: {
     light: 'hsl(0deg, 0%, 70%)',
