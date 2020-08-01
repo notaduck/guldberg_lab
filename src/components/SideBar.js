@@ -99,7 +99,7 @@ const Sidebar = () => {
               liStyle = { paddingLeft: '22px' };
             }
             return (
-              <li style={liStyle}>
+              <li style={liStyle} key={link.name}>
                 <a href={link.link}> {link.icon}</a>
               </li>
             );
